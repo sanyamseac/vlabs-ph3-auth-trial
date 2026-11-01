@@ -34,6 +34,7 @@ function helper() {
   console.log("  --validateExpDesc    validate the experiment description and assessment files");
   console.log("  --disablePlugin      disable the plugins");
   console.log("  --disableAnalytics   disable the analytics configuration");
+  console.log("  --disableAuth        leave out Virtual Labs sign-in (docs/auth.md)");
   console.log("  --deploy             deploy the experiment locally");
   console.log("  --env                environment to build the experiment");
   console.log("\n");
@@ -252,6 +253,8 @@ function readEnvVars() {
 
   vlabsEnv.expDeployBaseDir = process.env.VLAB_EXP_DEPLOY_BASE;
   vlabsEnv.labDeployBaseDir = process.env.VLAB_LAB_DEPLOY_BASE;
+  // Auth service URL for sign-in, if not the default (docs/auth.md).
+  vlabsEnv.authApi = process.env.VLAB_AUTH_API;
 
   return vlabsEnv;
 }
@@ -275,6 +278,7 @@ function main() {
   let isExpDescValidate = args.validateExpdesc || false;
   let isDebug = args.debug || false;
   let addAnalytics = args.disableAnalytics ? false : true;
+  let addAuth = args.disableAuth ? false : true;
   // for backwards compatibility if the env is not given assume it to
   // be testing.
   const build_options = {};
@@ -293,6 +297,7 @@ function main() {
   build_options.isESLINT = isESLINT;
   build_options.isExpDesc = isExpDesc;
   build_options.addAnalytics = addAnalytics;
+  build_options.addAuth = addAuth;
 
   if (isPlugin) {
     build_options.plugins = true;

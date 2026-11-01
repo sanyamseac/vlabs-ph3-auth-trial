@@ -229,6 +229,8 @@ class Task extends Unit {
       exp_name: lab_data.exp_name || exp_info_name_text,
       exp_short_name: lab_data.exp_short_name,
       service_worker_path: this.serviceWorkerPath(),
+      // Virtual Labs sign-in, unless built with --disableAuth (docs/auth.md).
+      auth: options.addAuth !== false ? { api: options.vlabsEnv && options.vlabsEnv.authApi } : null,
     };
     // Context Info for Bug report
     page_data.bugreport_context_info = JSON.stringify({

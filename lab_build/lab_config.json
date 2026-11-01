@@ -5,7 +5,8 @@
 		"broad-area.html",
 		"sidebar.html",
 		"navbar.html",
-		"analytics-body.html"
+		"analytics-body.html",
+		"auth-head.html"
     ],
     "pages" : [
 	{

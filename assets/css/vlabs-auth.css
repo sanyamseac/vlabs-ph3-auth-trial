@@ -1,0 +1,384 @@
+/* Virtual Labs sign-in: the header widget, login.html and profile.html.
+   Loaded after vlabs-style.css (Bootstrap 4). */
+
+:root {
+  --vl-blue: #2c99ce;
+  --vl-blue-dark: #1f7fb5;
+  --vl-orange: #ff6600;
+  --vl-green: #77bb41;
+  --vl-border: #e3e7eb;
+  --vl-muted: #6c757d;
+}
+
+/* ---- Header: sign-in button and account menu ---- */
+
+.vl-auth {
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  position: relative;
+  font-family: "Raleway", sans-serif;
+}
+
+/* vlabs-style.css spaces out every header link; undo that in the widget. */
+.vlabs-header .vl-auth a {
+  margin: 0;
+}
+
+.vlabs-header .vl-auth .vl-signin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1.1rem;
+  border: 2px solid var(--vl-blue);
+  border-radius: 10px;
+  color: var(--vl-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.vlabs-header .vl-auth .vl-signin-btn:hover {
+  background: var(--vl-green);
+  border-color: var(--vl-green);
+  color: #fff;
+  text-decoration: none;
+}
+
+.vl-user {
+  position: relative;
+}
+
+.vl-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #333;
+  font-weight: 600;
+  position: relative;
+}
+
+.vl-user-btn:hover,
+.vl-user-btn[aria-expanded="true"] {
+  background: #f1f6fa;
+}
+
+.vl-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--vl-blue);
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.vl-dot {
+  position: absolute;
+  top: 0.3rem;
+  left: 2.2rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--vl-orange);
+}
+
+.vl-user-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 1040;
+  min-width: 260px;
+  max-width: 90vw;
+  padding: 0.4rem 0;
+  border: 1px solid var(--vl-border);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  font-family: "Open Sans", sans-serif;
+}
+
+.vl-user-meta {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem 0.75rem;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--vl-border);
+  word-break: break-all;
+}
+
+.vl-user-meta span {
+  color: var(--vl-muted);
+  font-size: 0.875rem;
+}
+
+.vlabs-header .vl-user-menu a,
+.vl-user-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 1rem;
+  border: 0;
+  background: none;
+  color: #333;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.vlabs-header .vl-user-menu a:hover,
+.vl-user-menu button:hover {
+  background: #f1f6fa;
+  text-decoration: none;
+}
+
+.vl-user-menu .fa {
+  width: 1.25rem;
+  color: var(--vl-muted);
+}
+
+.vlabs-header .vl-user-menu .vl-menu-cta,
+.vl-user-menu .vl-menu-cta .fa {
+  color: var(--vl-orange);
+  font-weight: 600;
+}
+
+@media (max-width: 575px) {
+  .vl-user-name {
+    display: none;
+  }
+}
+
+/* ---- Sign-in and profile pages ---- */
+
+.vl-auth-page {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background: #f6f8fa;
+  font-family: "Open Sans", sans-serif;
+}
+
+.vl-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 2rem;
+  border: 1px solid var(--vl-border);
+  border-top: 4px solid var(--vl-blue);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.vl-card-wide {
+  max-width: 860px;
+}
+
+.vl-card-head {
+  margin-bottom: 1.5rem;
+}
+
+.vl-card-head h1 {
+  margin: 0 0 0.25rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.vl-sub {
+  margin: 0;
+  color: var(--vl-muted);
+}
+
+h2.vl-view-title {
+  padding: 0;
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.vl-card label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.vl-card .v-button {
+  display: inline-block;
+  font-weight: 600;
+}
+
+.vl-card .v-button:hover:not(:disabled) {
+  background-color: var(--vl-blue-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+.vl-card .v-button.btn-block {
+  display: block;
+}
+
+.vl-email-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: #f1f6fa;
+}
+
+.vl-email-chip [data-email] {
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+}
+
+.vl-email-chip .btn {
+  flex-shrink: 0;
+}
+
+.vl-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0 1rem;
+  color: var(--vl-muted);
+  font-size: 0.9rem;
+}
+
+.vl-divider::before,
+.vl-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--vl-border);
+}
+
+.vl-provider-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid #ccd3da;
+  border-radius: 1em;
+  background: #fff;
+  color: #333;
+  font-weight: 600;
+}
+
+.vl-provider-btn:hover {
+  background: #f6f8fa;
+  color: #333;
+  text-decoration: none;
+}
+
+.vl-provider-btn .fa {
+  font-size: 1.15rem;
+}
+
+.vl-turnstile {
+  min-height: 65px;
+  margin-bottom: 1rem;
+}
+
+/* vlabs-style.css sizes every iframe for embedded videos. */
+.vl-turnstile iframe {
+  height: 65px;
+}
+
+.vl-big-icon {
+  margin-bottom: 0.5rem;
+  color: var(--vl-blue);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.vl-fineprint {
+  margin: 1rem 0 0;
+  color: var(--vl-muted);
+  font-size: 0.9rem;
+}
+
+.vl-card fieldset {
+  margin-bottom: 1.25rem;
+}
+
+.vl-card legend {
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--vl-border);
+  color: var(--vl-blue);
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.vl-card legend small {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.vl-req {
+  color: #d9534f;
+}
+
+/* Autocomplete (institution) */
+.vl-combo {
+  position: relative;
+}
+
+.vl-combo-list {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  max-height: 20rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  border: 1px solid var(--vl-border);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.vl-combo-option {
+  display: flex;
+  flex-direction: column;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+}
+
+.vl-combo-option:hover,
+.vl-combo-option[aria-selected="true"] {
+  background: #eaf4fb;
+}
+
+.vl-combo-meta {
+  color: var(--vl-muted);
+  font-size: 0.8rem;
+}
+
+.vl-card .custom-control-label {
+  font-weight: 400;
+}
+
+.vl-card input[readonly] {
+  background: #f1f3f5;
+}
+
+@media (max-width: 575px) {
+  .vl-card {
+    padding: 1.5rem 1.25rem;
+  }
+}

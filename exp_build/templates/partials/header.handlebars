@@ -26,5 +26,9 @@
           custom_button_class="v-button"
       ></bug-report>
     </div>
+    {{#if auth}}
+    <!-- Virtual Labs sign-in: filled in by vlabs-auth.js (docs/auth.md) -->
+    <div class="vl-auth ml-auto" data-vlabs-auth></div>
+    {{/if}}
   </nav>
 </header>

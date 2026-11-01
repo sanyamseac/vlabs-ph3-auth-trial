@@ -102,6 +102,10 @@ const VLAB_INFRA_CONFIG = {
   "testing": {
     "url": "https://cdn.vlabs.ac.in/config/vlabs-config.js",
     "urlAlt": "https://cdn.vlabs.ac.in/config/vlabs-config.umd.cjs"
+  },
+  "local": {
+    "url": "https://cdn.vlabs.ac.in/config/vlabs-config.js",
+    "urlAlt": "https://cdn.vlabs.ac.in/config/vlabs-config.umd.cjs"
   }
 };
 

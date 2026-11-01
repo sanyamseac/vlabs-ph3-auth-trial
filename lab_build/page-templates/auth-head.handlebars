@@ -1,0 +1,9 @@
+{{#if auth}}
+<!-- Virtual Labs sign-in (docs/auth.md) -->
+<meta name="vlabs-auth-pages" content="." />
+{{#if auth.api}}
+<meta name="vlabs-auth-api" content="{{auth.api}}" />
+{{/if}}
+<link href="css/vlabs-auth.css" rel="stylesheet" />
+<script src="js/vlabs-auth.js"></script>
+{{/if}}

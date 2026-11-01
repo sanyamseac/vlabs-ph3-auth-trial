@@ -148,6 +148,7 @@ experiment repository location.
 | [[file:docs/lab-descriptor.org][Lab Descriptor]]           | This document describes the structure and functions of the lab-descriptor |
 | [[file:docs/exp-build-process.md][Experiment Build Process]] | Document describing the experiment build process.                         |
 | [[file:docs/analytics.org][Analytics]]                | Lab and Experiment Analytics details.                                     |
+| [[file:docs/auth.md][Sign-in]]                  | Virtual Labs sign-in on lab and experiment pages.                         |
 | [[docs/units.org][Units]]                    | Defines all types of  units in an experiment                              |
 | [[docs/plugins.org][Proposed Plugins]]         | Proposal for moving towards a plugin based architecture.                  |
 |--------------------------+---------------------------------------------------------------------------|

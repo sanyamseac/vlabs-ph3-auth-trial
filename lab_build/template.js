@@ -50,6 +50,12 @@ function addNavbar(dom, navbar) {
   return dom;
 }
 
+// The sign-in client and its settings (auth-head.handlebars).
+function addAuthHead(dom, authHead) {
+  dom.window.document.head.insertAdjacentHTML("beforeend", authHead);
+  return dom;
+}
+
 function populateTemplate(template, components, content) {
   log.debug("Loading Components");
   let dom = new JSDOM(`${template}`);
@@ -59,6 +65,7 @@ function populateTemplate(template, components, content) {
   res = addSideBar(res, components[3]);
   res = addNavbar(res, components[4]);
   res = addAnalyticsBody(res, components[5]);
+  res = addAuthHead(res, components[6]);
   res = addContent(res, content);
   return res.serialize();
 }

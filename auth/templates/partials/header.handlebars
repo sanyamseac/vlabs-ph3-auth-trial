@@ -1,0 +1,19 @@
+<header class="vlabs-header sticky-top bg-white">
+  <nav class="p-0 navbar navbar-light d-flex align-items-stretch flex-nowrap">
+    <div class="d-flex justify-content-center">
+      <a href="{{home}}" class="navbar-brand">
+        <img src="{{prefix}}images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+      </a>
+    </div>
+    <div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center">
+      <ul class="navbar-nav ml-auto text-center d-flex flex-md-row">
+        <li class="nav-item px-2 m-1"><a href="https://vlab.co.in">HOME</a></li>
+        <li class="nav-item px-2 m-1"><a href="https://vlab.co.in/participating-institutes">PARTNERS</a></li>
+        <li class="nav-item px-2 m-1"><a href="https://vlab.co.in/contact-us">CONTACT</a></li>
+      </ul>
+    </div>
+    {{#if account_menu}}
+    <div class="vl-auth ml-auto" data-vlabs-auth></div>
+    {{/if}}
+  </nav>
+</header>

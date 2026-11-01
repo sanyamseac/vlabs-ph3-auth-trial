@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{> head}}
+  <title>Your profile | Virtual Labs</title>
+  <script src="{{prefix}}js/vlabs-auth-profile.js" defer></script>
+</head>
+
+<body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between" data-requires-auth>
+  {{> header}}
+
+  <main class="vl-auth-page flex-fill d-flex flex-column align-items-center px-3">
+    <div class="vl-card vl-card-wide">
+      <div class="vl-card-head">
+        <h1 id="title">Your profile</h1>
+        <p class="vl-sub" id="intro"></p>
+      </div>
+
+      <div id="alert" class="alert" role="alert" hidden></div>
+
+      <div id="loading" class="text-center py-4">
+        <span class="spinner-border text-info" role="status" aria-hidden="true"></span>
+      </div>
+
+      <form id="profile-form" novalidate hidden>
+        <fieldset>
+          <legend>Account</legend>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="account-email">Email</label>
+              <input type="email" class="form-control" id="account-email" readonly>
+            </div>
+            <div class="form-group col-md-6" data-field="name">
+              <label for="name">Full name <span class="vl-req">*</span></label>
+              <input type="text" class="form-control" id="name" name="name" autocomplete="name" maxlength="100">
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>About you</legend>
+          <div class="form-row">
+            <div class="form-group col-md-6" data-field="gender">
+              <label for="gender">Gender <span class="vl-req">*</span></label>
+              <select class="custom-select" id="gender" name="gender" data-options="genders"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-6" data-field="age_group">
+              <label for="age_group">Age group <span class="vl-req">*</span></label>
+              <select class="custom-select" id="age_group" name="age_group" data-options="age_groups"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="form-group" data-field="gender_self_describe" data-show-if="gender=self_describe">
+            <label for="gender_self_describe">How do you describe your gender? <span class="vl-req">*</span></label>
+            <input type="text" class="form-control" id="gender_self_describe" name="gender_self_describe" maxlength="60">
+            <div class="invalid-feedback"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6" data-field="profession">
+              <label for="profession">You are a <span class="vl-req">*</span></label>
+              <select class="custom-select" id="profession" name="profession" data-options="professions"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-6" data-field="profession_detail" hidden>
+              <label for="profession_detail_select" id="profession-detail-label"></label>
+              <select class="custom-select" id="profession_detail_select" name="profession_detail"></select>
+              <input type="text" class="form-control" id="profession_detail_text" name="profession_detail" maxlength="100" aria-labelledby="profession-detail-label">
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="form-group" data-field="social_category">
+            <label for="social_category">Social category <span class="vl-req">*</span></label>
+            <select class="custom-select" id="social_category" name="social_category" data-options="social_categories"></select>
+            <div class="invalid-feedback"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Where you are</legend>
+          <div class="form-row">
+            <div class="form-group col-md-6" data-field="country">
+              <label for="country">Country <span class="vl-req">*</span></label>
+              <select class="custom-select" id="country" name="country" data-options="countries"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-6" data-field="pin_code">
+              <label for="pin_code" id="pin-label"></label>
+              <input type="text" class="form-control" id="pin_code" name="pin_code" autocomplete="postal-code" maxlength="12">
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="form-group" data-field="state">
+            <label for="state_select" id="state-label"></label>
+            <select class="custom-select" id="state_select" name="state" data-options="indian_states"></select>
+            <input type="text" class="form-control" id="state_text" name="state" autocomplete="address-level1" maxlength="100" aria-labelledby="state-label">
+            <div class="invalid-feedback"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>How you found Virtual Labs</legend>
+          <div class="form-row">
+            <div class="form-group col-md-6" data-field="referral_source">
+              <label for="referral_source">How did you find Virtual Labs? <span class="vl-req">*</span></label>
+              <select class="custom-select" id="referral_source" name="referral_source" data-options="referral_sources"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-6" data-field="referral_code">
+              <label for="referral_code">Workshop or referral code</label>
+              <input type="text" class="form-control" id="referral_code" name="referral_code" maxlength="64">
+              <div class="invalid-feedback"></div>
+              <small class="form-text text-muted" id="referral-hint">Optional. Given by your workshop coordinator or nodal centre.</small>
+            </div>
+          </div>
+          <div class="form-group" data-field="referral_source_other" data-show-if="referral_source=other">
+            <label for="referral_source_other">Tell us where <span class="vl-req">*</span></label>
+            <input type="text" class="form-control" id="referral_source_other" name="referral_source_other" maxlength="100">
+            <div class="invalid-feedback"></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Academic details <small class="text-muted" id="academic-note">(optional)</small></legend>
+          <div class="alert alert-info small" id="institution-note" hidden></div>
+          <div class="form-group" data-field="institution_name">
+            <label for="institution_name">Institution <span class="vl-req" data-workshop-only>*</span></label>
+            <!-- Suggestions from the AISHE directory while typing (js/profile.js) -->
+            <div class="vl-combo">
+              <input type="text" class="form-control" id="institution_name" name="institution_name" maxlength="200" autocomplete="off"
+                role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="institution-options" aria-describedby="institution-hint">
+              <ul class="vl-combo-list" id="institution-options" role="listbox" aria-label="Institutions" hidden></ul>
+            </div>
+            <input type="hidden" id="institution_aishe_code" name="institution_aishe_code">
+            <small class="form-text text-muted" id="institution-hint"></small>
+            <div class="invalid-feedback"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4" data-field="degree_level">
+              <label for="degree_level">Degree level <span class="vl-req" data-workshop-only>*</span></label>
+              <select class="custom-select" id="degree_level" name="degree_level" data-options="degree_levels"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-4" data-field="discipline">
+              <label for="discipline">Discipline <span class="vl-req" data-workshop-only>*</span></label>
+              <select class="custom-select" id="discipline" name="discipline" data-options="disciplines"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group col-md-4" data-field="graduation_year">
+              <label for="graduation_year">Year of graduation <span class="vl-req" data-workshop-only>*</span></label>
+              <select class="custom-select" id="graduation_year" name="graduation_year"></select>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="form-group" data-field="discipline_other" data-show-if="discipline=other">
+            <label for="discipline_other">Your discipline <span class="vl-req">*</span></label>
+            <input type="text" class="form-control" id="discipline_other" name="discipline_other" maxlength="100">
+            <div class="invalid-feedback"></div>
+          </div>
+        </fieldset>
+
+        <div class="custom-control custom-checkbox mb-4" data-field="analytics_consent">
+          <input type="checkbox" class="custom-control-input" id="analytics_consent" name="analytics_consent">
+          <label class="custom-control-label" for="analytics_consent">
+            Virtual Labs may use these details, combined with other users' and without my name or email, to understand who uses the labs and improve them.
+          </label>
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <button type="submit" class="v-button" id="save">Save and continue</button>
+      </form>
+    </div>
+  </main>
+
+  {{> footer}}
+</body>
+</html>
